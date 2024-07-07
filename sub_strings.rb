@@ -4,9 +4,10 @@ def substrings(word, dictionary)
   # find all substrings of word
   # make sure your method can handle multiple words
   substr_list = []
-  for i in (0...word.length)
+  # for i in (0...word.length)
+  word.length.times do |i|
     next unless word[i].match?(/[A-Za-z]/)
-    for j in (i...word.length)
+    (i...word.length).each do |j|
       # check if character at j is alphabet
       break unless word[j].match?(/[A-Za-z]/)
       substr_list.push(word[i..j])

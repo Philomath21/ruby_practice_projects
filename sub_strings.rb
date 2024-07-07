@@ -1,25 +1,28 @@
 def substrings(word, dictionary)
-  # return hash, listing each substring & no of occurances
+  word = word.downcase
 
   # find all substrings of word
   # make sure your method can handle multiple words
   substr_list = []
   for i in (0...word.length)
+    next unless word[i].match?(/[A-Za-z]/)
     for j in (i...word.length)
+      # check if character at j is alphabet
+      break unless word[j].match?(/[A-Za-z]/)
       substr_list.push(word[i..j])
     end
   end
 
   # for each substring
   substr_occ = {}
-  for substr in substr_list
+  for substr in dictionary
     # find no of its occurrances in dictionary
     # if found, add the substring and its count in new hash
-    case dictionary.count(substr)
+    case substr_list.count(substr)
     when 0
       next
     else
-      substr_occ[substr] = dictionary.count(substr)
+      substr_occ[substr] = substr_list.count(substr)
     end
   end
 
@@ -28,5 +31,5 @@ def substrings(word, dictionary)
 end
 
 dict = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
-word = "below"
-substrings(word, dict)
+substrings("below", dict)
+substrings("Howdy partner, sit down! How's it going?", dict)

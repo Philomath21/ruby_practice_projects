@@ -1,3 +1,4 @@
+
 def substrings(word, dictionary)
   word = word.downcase
 
@@ -11,6 +12,7 @@ def substrings(word, dictionary)
       # check if character at j is alphabet
       break unless word[j].match?(/[A-Za-z]/)
       substr_list.push(word[i..j])
+      debugger
     end
   end
 
